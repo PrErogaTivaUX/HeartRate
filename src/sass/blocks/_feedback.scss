@@ -1,0 +1,40 @@
+.feedback {
+    padding-bottom: 71px;    
+}
+
+.feedbacks {
+    margin-top: 70px;
+}
+
+.feedback-item {
+    display: flex;
+    margin-bottom: 100px;
+    &:last-child {
+        margin-bottom: 0px;
+    }
+    img {
+        width: 169px;
+        height: 169px;
+        border-radius: 100%;
+    }
+    &__comment {
+        padding-left: 62px;
+    }
+    &__name {
+        font-size: 18px;
+        font-weight: 700;
+        color: #0d0d0d;
+    }
+    &__subtitle {
+        font-size: 14px;
+        font-weight: 300;
+        color: #646464;
+    }
+    &__descr {
+        padding-top: 17px;
+        font-size: 16px;
+        line-height: 1.2;
+        font-weight: 300;
+        color: #0d0d0d;
+    }
+}
