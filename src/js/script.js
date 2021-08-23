@@ -57,10 +57,10 @@ document.querySelector('.slick-next').onclick = function () {
     toogleSlide('.catalog-item__back');
 
     $('[data-model=consultation]').on('click',function() {
-        $('.overlay, #consult').fadeIn('slow');
+        $('.overlay, #consultation').fadeIn('slow');
     });
     $('.modal__close').on('click', function() {
-        $('.overlay, #consult, #thanks, #order').fadeOut('slow');
+        $('.overlay, #consultation, #thanks, #order').fadeOut('slow');
     })
 
 
@@ -69,10 +69,33 @@ document.querySelector('.slick-next').onclick = function () {
             $('#order .modal__descr').text($('.catalog-item__subtitle').eq(i).text());
             $('.overlay, #order').fadeIn('slow');            
         })
-    })
+    })    
 
-    $('#consultation-form').validate();
-    $('#form_1').validate();
-    $('#form_2').validate();
+    function ValidateForms(form) {
+        $(form).validate({
+            rules: {
+                name: "required",
+                phone: "required",
+                email:{
+                    required: true,
+                    email: true
+                }
+            },
+            messages: {
+                name: "Введите свое имя.",
+                phone: "Введите свой номер телефона.",
+                email: {
+                    required: "Введите свою почту.",
+                    email: "Неверный формат почты. Пример: example@test.com"
+                }
+            }
+        });
+    };
 
+
+    ValidateForms('#consultation-form');
+    ValidateForms('#consultation form');
+    ValidateForms('#order form');
+
+    $('input[name=phone]').mask("+7 (999) 999-99-99");
 })(jQuery);
