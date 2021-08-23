@@ -16,7 +16,14 @@
         img {
             display: block;
             margin: 0 auto;
+            
         }
+    }
+    &__icon_animated {
+        animation-name: heartbeat;
+        animation-duration: 1.5s;
+        animation-timing-function: ease;
+        animation-iteration-count: infinite;
     }
     &__subheader {
         margin-top: 32px;

@@ -70,7 +70,7 @@ document.querySelector('.slick-next').onclick = function () {
             $('.overlay, #order').fadeIn('slow');            
         })
     })    
-
+    //Form Validation
     function ValidateForms(form) {
         $(form).validate({
             rules: {
@@ -92,10 +92,43 @@ document.querySelector('.slick-next').onclick = function () {
         });
     };
 
-
+    
     ValidateForms('#consultation-form');
     ValidateForms('#consultation form');
     ValidateForms('#order form');
-
+    //Phone mask
     $('input[name=phone]').mask("+7 (999) 999-99-99");
+    //PhpMailer
+    $('form').submit(function(e) {
+        e.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: "mailer/smart.php",
+            data: $(this).serialize()
+        }).done(function() {
+            $(this).find("input").val("");
+            $('#consultation, #order').fadeOut();
+            $('.overlay, #thanks').fadeIn('slow');
+
+            $('form').trigger('reset');
+        })
+        return false;
+    });
+
+    //Smooth scroll and pageup
+
+    $(window).scroll(function() {
+        if($(this).scrollTop() > 700) {
+            $('.pageup').fadeIn();
+        } else {
+            $('.pageup').fadeOut();
+        }
+    });
+
+    $("a[href^='#']").click(function(){
+        var _href = $(this).attr("href");
+        $("html, body").animate({scrollTop: $(_href).offset().top+"px"});
+        return false;
+    });
+
 })(jQuery);
