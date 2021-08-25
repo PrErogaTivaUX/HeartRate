@@ -131,4 +131,6 @@ document.querySelector('.slick-next').onclick = function () {
         return false;
     });
 
+    new WOW().init();
+
 })(jQuery);
